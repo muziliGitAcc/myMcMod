@@ -13,6 +13,6 @@ import static my.computer.mod.Generic.propertiesGeneric.itemGroup;
 public class myItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, propertiesGeneric.modId);
     public static RegistryObject<Item> myComputer = ITEMS.register("my_computer", myComputerItem::new);
-    public static RegistryObject<Item> myComputerBlock = ITEMS.register("my_computer_block", () -> new BlockItem(myBlockRegistry.myComputerBlock.get(), new Item.Properties().group(itemGroup)));
+    public static RegistryObject<Item> myComputerBlock = ITEMS.register("my_computer_block", () -> new BlockItem(myBlockRegistry.ModBlocks.MONITOR_NORMAL_BLOCK.get(), new Item.Properties().group(itemGroup)));
 
 }

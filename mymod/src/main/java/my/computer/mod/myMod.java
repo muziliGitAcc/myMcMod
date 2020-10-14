@@ -11,6 +11,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class myMod {
     public myMod() {
         myItemRegistry.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        myBlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        myBlockRegistry.setup();
     }
 }
