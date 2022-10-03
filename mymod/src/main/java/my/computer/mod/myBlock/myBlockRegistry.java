@@ -21,7 +21,7 @@ public class myBlockRegistry {
     public static final class ModBlocks{
         private static Block.Properties properties()
         {
-            return Block.Properties.create( Material.ROCK ).hardnessAndResistance( 2 );
+            return Block.Properties.create( Material.ROCK ).hardnessAndResistance( 2 ).notSolid();
         }
         static final DeferredRegister<Block> BLOCKS = DeferredRegister.create( ForgeRegistries.BLOCKS, propertiesGeneric.modId );
         public static final RegistryObject<myComputerBlock> MONITOR_NORMAL_BLOCK = BLOCKS.register( "my_computer_block",

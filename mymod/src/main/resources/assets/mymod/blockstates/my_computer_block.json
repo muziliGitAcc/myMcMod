@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "mymod:block/my_computer_block" }
+  }
+}
