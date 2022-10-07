@@ -2,11 +2,10 @@ package my.computer.mod.myBlock;
 
 
 import my.computer.mod.Generic.propertiesGeneric;
-import my.computer.mod.myTile.myComputerItle;
+import my.computer.mod.myTile.myComputerTile;
 import my.computer.util.FixedPointTileEntityType;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -34,9 +33,11 @@ public class myBlockRegistry {
         {
             return TILES.register( block.getId().getPath(), () -> FixedPointTileEntityType.create( block, factory ) );
         }
-        public static final RegistryObject<TileEntityType<myComputerItle>> MONITOR_NORMAL_ENTITY =
-                ofBlock( ModBlocks.MONITOR_NORMAL_BLOCK, myComputerItle::new);
+        public static final RegistryObject<TileEntityType<myComputerTile>> MONITOR_NORMAL_ENTITY =
+                ofBlock( ModBlocks.MONITOR_NORMAL_BLOCK, myComputerTile::new);
     }
+
+
 
     public static void setup()
     {

@@ -15,8 +15,8 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 import javax.annotation.Nonnull;
 
-public class myComputerItle extends TileGeneric {
-    public myComputerItle(TileEntityType<? extends TileGeneric> type) {
+public class myComputerTile extends TileGeneric {
+    public myComputerTile(TileEntityType<? extends TileGeneric> type) {
         super(type);
     }
 
