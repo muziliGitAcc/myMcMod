@@ -47,9 +47,13 @@ public class myComputerTileTER extends TileEntityRenderer<myComputerTile> {
     @Override
     public void render(myComputerTile tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
         BlockRendererDispatcher blockRenderer = Minecraft.getInstance().getBlockRendererDispatcher();
-        BlockState state = Blocks.CHEST.getDefaultState();
-//        BlockState state = myBlockRegistry.ModBlocks.MONITOR_NORMAL_BLOCK.get().getDefaultState();
+//        BlockState state = Blocks.CHEST.getDefaultState();
+        BlockState state = myBlockRegistry.ModBlocks.MONITOR_NORMAL_BLOCK.get().getDefaultState();
+        Minecraft mc = Minecraft.getInstance();
         matrixStackIn.push();
+        matrixStackIn.translate( 0.5f, 0.5f, 0.5f );
+        matrixStackIn.rotate( mc.getRenderManager().getCameraOrientation() );
+        matrixStackIn.translate( -0.5f, -0.5f, -0.5f );
         blockRenderer.renderBlock(state, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn, EmptyModelData.INSTANCE);
         matrixStackIn.pop();
 
