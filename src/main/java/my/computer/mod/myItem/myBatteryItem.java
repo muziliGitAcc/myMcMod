@@ -34,20 +34,15 @@ public class myBatteryItem extends Item {
         }
 
         final myBatteryEntity robot = MyEntities.ROBOT.get().create(context.getWorld());
-        robot.setPositionAndRotation(position.x, position.y, position.z,
-                Direction.fromAngle(context.getPlacementYaw()).getOpposite().getHorizontalAngle(), 0);
+//        robot.setPositionAndRotation(position.x, position.y, position.z,
+//                Direction.fromAngle(context.getPlacementYaw()).getOpposite().getHorizontalAngle(), 0);
+        robot.func_242281_f(position.x, position.y, position.z);
 
-//        if (!world.isRemote()) {
-//            RobotActions.initializeData(robot);
-//            robot.importFromItemStack(context.getItemInHand());
-//
-//            world.addFreshEntity(robot);
-//            WorldUtils.playSound(world, new BlockPos(position), SoundType.METAL, SoundType::getPlaceSound);
-//
-//            if (!context.getPlayer().isCreative()) {
-//                context.getItemInHand().shrink(1);
-//            }
-//        }
+        if (!world.isRemote()) {
+
+            world.addEntity(robot);
+
+        }
 
         context.getPlayer().addStat(Stats.ITEM_USED.get(this));
 

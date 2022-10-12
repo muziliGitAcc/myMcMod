@@ -13,9 +13,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class ClientEventHandler {
     @SubscribeEvent
     public static void onClientEvent(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            System.out.println("Dsadhbsakhfklgljkdlkjgfdlkj");
-            RenderingRegistry.registerEntityRenderingHandler(MyEntities.ROBOT.get(), myBatteryEntityTER::new);
-        });
+        RenderingRegistry.registerEntityRenderingHandler(MyEntities.ROBOT.get(), myBatteryEntityTER::new);
+        System.out.println("Dsadhbsakhfklgljkdlkjgfdlkj");
+//        event.enqueueWork(() -> {
+//            System.out.println("Dsadhbsakhfklgljkdlkjgfdlkj");
+//            RenderingRegistry.registerEntityRenderingHandler(MyEntities.ROBOT.get(), myBatteryEntityTER::new);
+//        });
     }
 }

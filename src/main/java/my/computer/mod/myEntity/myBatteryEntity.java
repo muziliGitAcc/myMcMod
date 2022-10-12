@@ -1,44 +1,65 @@
 package my.computer.mod.myEntity;
 
-import my.computer.mod.Generic.TileGeneric;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
-
-import javax.annotation.Nonnull;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class myBatteryEntity extends Entity {
 
-
+    private static final DataParameter<Integer> COUNTER = EntityDataManager.createKey(myBatteryEntity.class, DataSerializers.VARINT);
     public myBatteryEntity(EntityType<?> entityTypeIn, World worldIn) {
         super(entityTypeIn, worldIn);
     }
 
     @Override
     protected void registerData() {
-
+        this.dataManager.register(COUNTER, 0);
     }
 
     @Override
     protected void readAdditional(CompoundNBT compound) {
-
+        this.dataManager.set(COUNTER, compound.getInt("counter"));
     }
 
     @Override
     protected void writeAdditional(CompoundNBT compound) {
+        compound.putInt("counter", this.dataManager.get(COUNTER));
+    }
+    //猜测是是否与玩家有碰撞 不设置的话玩家能够直接穿过去
+    @Override
+    public boolean func_241845_aY() {
+        return true;
+    }
+    //是否有碰撞
+    @Override
+    public boolean canBeCollidedWith(){
+        return true;
+    }
 
+    //碰撞时是否可以被推走
+    @Override
+    public boolean canBePushed(){
+        return true;
+    }
+
+    @Override
+    public void tick() {
+        if (world.isRemote) {
+        }
+        if (!world.isRemote) {
+            this.dataManager.set(COUNTER, this.dataManager.get(COUNTER) + 1);
+        }
+        super.tick();
     }
 
     @Override
     public IPacket<?> createSpawnPacket() {
-        return null;
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

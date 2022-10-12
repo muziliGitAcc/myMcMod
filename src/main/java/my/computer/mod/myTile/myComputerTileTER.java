@@ -6,10 +6,7 @@ import my.computer.mod.myBlock.myBlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BlockModelRenderer;
-import net.minecraft.client.renderer.BlockRendererDispatcher;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.model.ModelRenderer;
@@ -46,15 +43,16 @@ public class myComputerTileTER extends TileEntityRenderer<myComputerTile> {
 
     @Override
     public void render(myComputerTile tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
-        BlockRendererDispatcher blockRenderer = Minecraft.getInstance().getBlockRendererDispatcher();
+//        BlockRendererDispatcher blockRenderer = Minecraft.getInstance().getBlockRendererDispatcher();
 //        BlockState state = Blocks.CHEST.getDefaultState();
         BlockState state = myBlockRegistry.ModBlocks.MONITOR_NORMAL_BLOCK.get().getDefaultState();
         Minecraft mc = Minecraft.getInstance();
         matrixStackIn.push();
+        group.render(matrixStackIn,bufferIn.getBuffer(RenderType.func_239274_p_()),combinedLightIn,combinedOverlayIn);
         matrixStackIn.translate( 0.5f, 0.5f, 0.5f );
         matrixStackIn.rotate( mc.getRenderManager().getCameraOrientation() );
         matrixStackIn.translate( -0.5f, -0.5f, -0.5f );
-        blockRenderer.renderBlock(state, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn, EmptyModelData.INSTANCE);
+//        blockRenderer.renderBlock(state, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn, EmptyModelData.INSTANCE);
         matrixStackIn.pop();
 
     }

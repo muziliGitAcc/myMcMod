@@ -6,12 +6,15 @@ package my.computer.mod.myEntity;// Made with Blockbench 4.4.2
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import my.computer.mod.Generic.propertiesGeneric;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Quaternion;
+import net.minecraft.util.math.vector.Vector3f;
 
 import java.util.function.Function;
 
@@ -41,6 +44,14 @@ public class customModel extends EntityModel<myBatteryEntity> {
 
 	@Override
 	public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
+		matrixStackIn.push();
 
+//		matrixStackIn.translate(0.0F,0.5F,0.0F);
+//		matrixStackIn.rotate(Vector3f.XP.rotationDegrees( 180.0F));
+		Minecraft mc = Minecraft.getInstance();
+		matrixStackIn.rotate( mc.getRenderManager().getCameraOrientation() );
+//		matrixStackIn.translate(0.5F,-0.5F,0.0F);
+		group.render(matrixStackIn,bufferIn,packedLightIn,packedOverlayIn);
+		matrixStackIn.pop();
 	}
 }
