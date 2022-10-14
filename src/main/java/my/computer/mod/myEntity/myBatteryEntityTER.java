@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
 
 public class myBatteryEntityTER extends EntityRenderer<myBatteryEntity> {
-    private final customModel model = new customModel();;
+    private final customModel model = new customModel();
     public myBatteryEntityTER(EntityRendererManager renderManager) {
         super(renderManager);
     }

@@ -15,5 +15,6 @@ public class myItemRegistry {
     public static RegistryObject<Item> myComputer = ITEMS.register("my_computer_item", myComputerItem::new);
     public static RegistryObject<Item> myBattery = ITEMS.register("my_battery_item", myBatteryItem::new);
     public static RegistryObject<Item> myComputerBlock = ITEMS.register("my_computer_block", () -> new BlockItem(myBlockRegistry.ModBlocks.MONITOR_NORMAL_BLOCK.get(), new Item.Properties().group(itemGroup)));
+    public static RegistryObject<Item> myComputerBlock02 = ITEMS.register("my_computer_block_02", () -> new BlockItem(myBlockRegistry.ModBlocks.MONITOR_NORMAL_BLOCK_02.get(), new Item.Properties().group(itemGroup)));
 
 }

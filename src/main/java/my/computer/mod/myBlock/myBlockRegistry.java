@@ -25,6 +25,8 @@ public class myBlockRegistry {
         static final DeferredRegister<Block> BLOCKS = DeferredRegister.create( ForgeRegistries.BLOCKS, propertiesGeneric.modId );
         public static final RegistryObject<myComputerBlock> MONITOR_NORMAL_BLOCK = BLOCKS.register( "my_computer_block",
                 () -> new myComputerBlock( properties(), ModTiles.MONITOR_NORMAL_ENTITY ) );
+        public static final RegistryObject<myComputerBlock> MONITOR_NORMAL_BLOCK_02 = BLOCKS.register( "my_computer_block_02",
+                () -> new myComputerBlock( properties(), ModTiles.MONITOR_NORMAL_ENTITY ) );
     }
 
     public static class ModTiles{
